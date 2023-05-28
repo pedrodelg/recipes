@@ -1,0 +1,7 @@
+recipes:
+  chili:
+    jsonFileName: src/main/resources/30_Minute_Chili.json
+  amaretto:
+    jsonFileName: src/main/resources/Amaretto_Cake.json
+  zucchini:
+    jsonFileName: src/main/resources/Another_Zucchini_Dish.json
