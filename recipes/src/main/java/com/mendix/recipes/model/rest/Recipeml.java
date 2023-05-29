@@ -1,4 +1,4 @@
-package com.mendix.recipes.model;
+package com.mendix.recipes.model.rest;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Directions {
+public class Recipeml {
 
-    private String step;
+    private Recipe recipe;
+
 }

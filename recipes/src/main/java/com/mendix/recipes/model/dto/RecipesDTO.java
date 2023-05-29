@@ -1,6 +1,7 @@
-package com.mendix.recipes.model;
+package com.mendix.recipes.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.mendix.recipes.model.rest.RecipeComplete;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,9 +11,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Ingredients {
+public class RecipesDTO {
 
-    @JsonProperty("ing")
-    List<Ing> ingList;
-
+    @JsonProperty("recipes")
+    private List<RecipeComplete> recipesList;
 }

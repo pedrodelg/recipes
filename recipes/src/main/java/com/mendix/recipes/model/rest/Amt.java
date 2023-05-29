@@ -1,4 +1,4 @@
-package com.mendix.recipes.model;
+package com.mendix.recipes.model.rest;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Ing {
+public class Amt {
 
-    private Amt amt;
-    String item;
+    private Integer qty;
+    private String unit;
 }

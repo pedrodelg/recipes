@@ -1,6 +1,6 @@
 package com.mendix.recipes.operation;
 
-import com.mendix.recipes.model.RecipeComplete;
+import com.mendix.recipes.model.dto.RecipesDTO;
 import com.mendix.recipes.repository.RecipesRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -9,11 +9,11 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class RecipesOperationImpl implements RecipesOperation{
 
-    private final RecipesRepository chiliRepository;
+    private final RecipesRepository recipesRepository;
 
     @Override
-    public RecipeComplete getAllRecipes() {
+    public RecipesDTO getAllRecipes() {
 
-        return chiliRepository.getRecipeml();
+        return recipesRepository.getRecipesDTO();
     }
 }

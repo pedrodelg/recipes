@@ -1,14 +1,15 @@
-package com.mendix.recipes.model;
+package com.mendix.recipes.model.rest;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Recipeml {
+public class Categories {
 
-    private Recipe recipe;
-
+    private List<String> cat;
 }

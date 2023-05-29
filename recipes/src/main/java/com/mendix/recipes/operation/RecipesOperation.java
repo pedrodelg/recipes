@@ -1,9 +1,8 @@
 package com.mendix.recipes.operation;
 
-
-import com.mendix.recipes.model.RecipeComplete;
+import com.mendix.recipes.model.dto.RecipesDTO;
 
 public interface RecipesOperation {
 
-    public RecipeComplete getAllRecipes();
+    public RecipesDTO getAllRecipes();
 }

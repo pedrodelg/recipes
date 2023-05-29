@@ -1,4 +1,4 @@
-package com.mendix.recipes.model;
+package com.mendix.recipes.model.rest;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
