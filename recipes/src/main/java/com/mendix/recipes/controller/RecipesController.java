@@ -1,5 +1,6 @@
 package com.mendix.recipes.controller;
 
+import com.mendix.recipes.model.dto.RecipeResponseDTO;
 import com.mendix.recipes.model.dto.RecipesDTO;
 import com.mendix.recipes.model.rest.Recipeml;
 import com.mendix.recipes.operation.RecipesOperation;
@@ -8,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api")
@@ -23,8 +26,14 @@ public class RecipesController {
     }
 
     @PostMapping("/new-recipe")
-    public ResponseEntity<String> addNewRecipe(@Valid @RequestBody Recipeml newRecipe) {
+    public ResponseEntity<RecipeResponseDTO> addNewRecipe(@Valid @RequestBody Recipeml newRecipe) {
 
-        return new ResponseEntity<String>(recipesOperation.addNewRecipe(newRecipe), null, HttpStatus.CREATED);
+        return new ResponseEntity<RecipeResponseDTO>(recipesOperation.addNewRecipe(newRecipe), null, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/getCategories")
+    public ResponseEntity<List<String>> recipesGet(){
+
+        return new ResponseEntity<List<String>>(recipesOperation.getCategories(), null, HttpStatus.OK);
     }
 }

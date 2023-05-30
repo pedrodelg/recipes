@@ -1,6 +1,7 @@
 package com.mendix.recipes.operation;
 
 import com.mendix.recipes.error.RecipesException;
+import com.mendix.recipes.model.dto.RecipeResponseDTO;
 import com.mendix.recipes.model.dto.RecipesDTO;
 import com.mendix.recipes.model.rest.Head;
 import com.mendix.recipes.model.rest.Recipe;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
@@ -36,7 +38,7 @@ public class RecipesOperationImpl implements RecipesOperation{
     }
 
     @Override
-    public String addNewRecipe(Recipeml newRecipe) {
+    public RecipeResponseDTO addNewRecipe(Recipeml newRecipe) {
 
         String newRecipeTitle = newRecipe.getRecipe().getHead().getTitle();
 
@@ -57,10 +59,22 @@ public class RecipesOperationImpl implements RecipesOperation{
 
             recipesRepository.getRecipesDTO().setRecipesList(updateRecipesList);
 
-            return "Recipe added successfully";
+            return new RecipeResponseDTO("Recipe added successfully", newRecipe);
         }else{
             throw new RecipesException("The recipe: '" +newRecipeTitle +"' already exists");
         }
+
+    }
+
+    @Override
+    public List<String> getCategories() {
+
+        return recipesRepository.getRecipesDTO().getRecipesList()
+                 .stream().map(recipeComplete -> recipeComplete.getRecipeml())
+                 .map(Recipeml::getRecipe)
+                 .map(Recipe::getHead)
+                 .map(Head::getCategories)
+                 .flatMap(categories -> categories.getCat().stream()).collect(Collectors.toList());
 
     }
 }
