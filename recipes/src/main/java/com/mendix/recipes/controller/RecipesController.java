@@ -1,14 +1,13 @@
 package com.mendix.recipes.controller;
 
 import com.mendix.recipes.model.dto.RecipesDTO;
+import com.mendix.recipes.model.rest.Recipeml;
 import com.mendix.recipes.operation.RecipesOperation;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api")
@@ -18,8 +17,14 @@ public class RecipesController {
     private final RecipesOperation recipesOperation;
 
     @GetMapping("/getRecipes")
-    public ResponseEntity<RecipesDTO> recipesGet(@RequestParam String category){
+    public ResponseEntity<RecipesDTO> recipesGet(@RequestParam(value = "category", required = false) String category){
 
-        return new ResponseEntity<RecipesDTO>(recipesOperation.getAllRecipes(), null, HttpStatus.OK);
+        return new ResponseEntity<RecipesDTO>(recipesOperation.getRecipes(category), null, HttpStatus.OK);
+    }
+
+    @PostMapping("/new-recipe")
+    public ResponseEntity<String> addNewRecipe(@Valid @RequestBody Recipeml newRecipe) {
+
+        return new ResponseEntity<String>(recipesOperation.addNewRecipe(newRecipe), null, HttpStatus.CREATED);
     }
 }

@@ -2,6 +2,7 @@ package com.mendix.recipes.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mendix.recipes.model.rest.RecipeComplete;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,5 +15,7 @@ import java.util.List;
 public class RecipesDTO {
 
     @JsonProperty("recipes")
+    @NotNull
     private List<RecipeComplete> recipesList;
+
 }

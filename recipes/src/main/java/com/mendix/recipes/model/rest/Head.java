@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class Head {
 
+
     private String title;
     private Categories categories;
     private Integer yield;
