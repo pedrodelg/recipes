@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
@@ -23,16 +22,22 @@ public class RecipesOperationImpl implements RecipesOperation{
     private final RecipesRepository recipesRepository;
 
     @Override
-    public RecipesDTO getRecipes(String category) {
+    public RecipesDTO getRecipes(String category, String name) {
 
         RecipesDTO recipesDTO = new RecipesDTO();
         recipesDTO.setRecipesList(
-                category == null ?
+                category == null && name == null ?
                         recipesRepository.getRecipesDTO().getRecipesList() :
                         recipesRepository.getRecipesDTO().getRecipesList().stream()
-                                .filter(categoryStream -> categoryStream.getRecipeml().getRecipe().getHead().getCategories().getCat().contains(category))
+                                .filter(categoryStream -> category == null ||
+                                        categoryStream.getRecipeml().getRecipe().getHead().getCategories().getCat().stream()
+                                                .anyMatch(cat -> cat.toLowerCase().contains(category.toLowerCase())))
+                                .filter(categoryStream2 -> name == null ||
+                                        categoryStream2.getRecipeml().getRecipe().getHead().getTitle().toLowerCase().contains(name.toLowerCase()))
                                 .collect(Collectors.toList())
         );
+
+
 
         return recipesDTO;
     }

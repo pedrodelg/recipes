@@ -72,11 +72,11 @@ public class RecipesControllerTest {
     @Test
     public void get_recipes_without_query_parameters(){
 
-        when(recipesOperation.getRecipes(null)).thenReturn(expectedResponse);
+        when(recipesOperation.getRecipes(null,null)).thenReturn(expectedResponse);
 
-        ResponseEntity<RecipesDTO> response = recipesController.recipesGet(null);
+        ResponseEntity<RecipesDTO> response = recipesController.recipesGet(null,null);
 
-        verify(recipesOperation).getRecipes(null);
+        verify(recipesOperation).getRecipes(null,null);
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(expectedResponse, response.getBody());
 
@@ -87,11 +87,11 @@ public class RecipesControllerTest {
 
         String category = "Main dishs";
 
-        when(recipesOperation.getRecipes(category)).thenReturn(expectedResponse);
+        when(recipesOperation.getRecipes(category, null)).thenReturn(expectedResponse);
 
-        ResponseEntity<RecipesDTO> response = recipesController.recipesGet(category);
+        ResponseEntity<RecipesDTO> response = recipesController.recipesGet(category, null);
 
-        verify(recipesOperation).getRecipes(category);
+        verify(recipesOperation).getRecipes(category, null);
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(expectedResponse, response.getBody());
     }

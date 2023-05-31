@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface RecipesOperation {
 
-    public RecipesDTO getRecipes(String category);
+    public RecipesDTO getRecipes(String category, String name);
 
     public RecipeResponseDTO addNewRecipe(Recipeml newRecipes);
 

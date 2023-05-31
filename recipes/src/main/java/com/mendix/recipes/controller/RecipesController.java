@@ -20,9 +20,10 @@ public class RecipesController {
     private final RecipesOperation recipesOperation;
 
     @GetMapping("/getRecipes")
-    public ResponseEntity<RecipesDTO> recipesGet(@RequestParam(value = "category", required = false) String category){
+    public ResponseEntity<RecipesDTO> recipesGet(@RequestParam(value = "category", required = false) String category,
+                                                 @RequestParam(value = "name", required = false) String name){
 
-        return new ResponseEntity<RecipesDTO>(recipesOperation.getRecipes(category), null, HttpStatus.OK);
+        return new ResponseEntity<RecipesDTO>(recipesOperation.getRecipes(category, name), null, HttpStatus.OK);
     }
 
     @PostMapping("/new-recipe")

@@ -71,7 +71,7 @@ public class RecipesOperationTest {
         mockRecipesDTO.setRecipesList(mockRecipesList);
         when(recipesRepository.getRecipesDTO()).thenReturn(mockRecipesDTO);
 
-        RecipesDTO result = recipesOperation.getRecipes(category);
+        RecipesDTO result = recipesOperation.getRecipes(category, null);
 
         assertEquals(2, result.getRecipesList().size());
         assertEquals(recipe1, result.getRecipesList().get(0));
@@ -115,7 +115,7 @@ public class RecipesOperationTest {
 
         when(recipesRepository.getRecipesDTO()).thenReturn(mockRecipesDTO);
 
-        RecipesDTO result = recipesOperation.getRecipes(null);
+        RecipesDTO result = recipesOperation.getRecipes(null,null);
 
         assertEquals(2, result.getRecipesList().size());
     }
