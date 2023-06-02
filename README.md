@@ -1,4 +1,4 @@
-# REST API Recipes
+# 🍛 API Recipes
 
 REST API to get recipes and add a new one.
 
