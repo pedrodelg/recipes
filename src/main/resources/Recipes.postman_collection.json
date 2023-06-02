@@ -1,0 +1,97 @@
+{
+	"info": {
+		"_postman_id": "ba7657a4-05c7-4d5f-84e7-03b30ff89254",
+		"name": "Recipes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27738925"
+	},
+	"item": [
+		{
+			"name": "get-recipes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/get-recipes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"get-recipes"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "zucc",
+							"disabled": true
+						},
+						{
+							"key": "category",
+							"value": "main",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "new-recipe",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \n    \"recipe\": {\n        \"head\": {\n            \"title\": \"paella\",\n            \"categories\": {\n                \"cat\": [\n                    \"test\",\n                    \"Vegetables\"\n                ]\n            },\n            \"yield\": 6\n        },\n        \"ingredients\": {\n            \"ing\": [\n                {\n                    \"amt\": {\n                        \"qty\": 1,\n                        \"unit\": \"pound\"\n                    },\n                    \"item\": \"Zucchini; cubed 1/2 \\\"\"\n                },\n                {\n                    \"amt\": {\n                        \"qty\": 3,\n                        \"unit\": \"tablespoons\"\n                    },\n                    \"item\": \"Butter or margarine\"\n                },\n                {\n                    \"amt\": {\n                        \"qty\": 3,\n                        \"unit\": \"\"\n                    },\n                    \"item\": \"Eggs; beaten\"\n                },\n                {\n                    \"amt\": {\n                        \"qty\": 1,\n                        \"unit\": \"\"\n                    },\n                    \"item\": \"Jar pimentos; 2 1/2 oz, diced\"\n                },\n                {\n                    \"amt\": {\n                        \"qty\": 1,\n                        \"unit\": \"cup\"\n                    },\n                    \"item\": \"Cheddar cheese; shredded\"\n                },\n                {\n                    \"amt\": {\n                        \"qty\": 1,\n                        \"unit\": \"can\"\n                    },\n                    \"item\": \"French fried onion rings 3 oz.\"\n                }\n            ]\n        },\n        \"directions\": {\n            \"step\": \"test\"\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/add-recipe",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"add-recipe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/get-categories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"get-categories"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mendix.recipes.controller.RecipesControllerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2023-06-02T08:49:17" hostname="Pedros-MacBook-Pro.local" time="0.051">
+  <properties/>
+  <testcase name="test_get_recipes_without_query_parameters()" classname="com.mendix.recipes.controller.RecipesControllerTest" time="0.047"/>
+  <testcase name="test_get_categories()" classname="com.mendix.recipes.controller.RecipesControllerTest" time="0.001"/>
+  <testcase name="test_add_new_recipe()" classname="com.mendix.recipes.controller.RecipesControllerTest" time="0.001"/>
+  <testcase name="test_get_recipes_filtering_category()" classname="com.mendix.recipes.controller.RecipesControllerTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
