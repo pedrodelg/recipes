@@ -1,6 +1,7 @@
 package com.mendix.recipes.operation;
 
 import com.mendix.recipes.error.RecipesException;
+import com.mendix.recipes.model.dto.CategoriesDTO;
 import com.mendix.recipes.model.dto.RecipeResponseDTO;
 import com.mendix.recipes.model.dto.RecipesDTO;
 import com.mendix.recipes.model.rest.Head;
@@ -37,8 +38,6 @@ public class RecipesOperationImpl implements RecipesOperation{
                                 .collect(Collectors.toList())
         );
 
-
-
         return recipesDTO;
     }
 
@@ -72,14 +71,14 @@ public class RecipesOperationImpl implements RecipesOperation{
     }
 
     @Override
-    public List<String> getCategories() {
+    public CategoriesDTO getCategories() {
 
-        return recipesRepository.getRecipesDTO().getRecipesList()
-                 .stream().map(recipeComplete -> recipeComplete.getRecipeml())
-                 .map(Recipeml::getRecipe)
-                 .map(Recipe::getHead)
-                 .map(Head::getCategories)
-                 .flatMap(categories -> categories.getCat().stream()).collect(Collectors.toList());
+        return new CategoriesDTO(recipesRepository.getRecipesDTO().getRecipesList()
+                .stream().map(recipeComplete -> recipeComplete.getRecipeml())
+                .map(Recipeml::getRecipe)
+                .map(Recipe::getHead)
+                .map(Head::getCategories)
+                .flatMap(categories -> categories.getCat().stream()).collect(Collectors.toList()));
 
     }
 }

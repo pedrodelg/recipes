@@ -1,3 +1,6 @@
+server:
+  port: 8081
+
 recipes:
   chili:
     jsonFileName: src/main/resources/30_Minute_Chili.json

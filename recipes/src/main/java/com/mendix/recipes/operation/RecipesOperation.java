@@ -1,10 +1,9 @@
 package com.mendix.recipes.operation;
 
+import com.mendix.recipes.model.dto.CategoriesDTO;
 import com.mendix.recipes.model.dto.RecipeResponseDTO;
 import com.mendix.recipes.model.dto.RecipesDTO;
 import com.mendix.recipes.model.rest.Recipeml;
-
-import java.util.List;
 
 public interface RecipesOperation {
 
@@ -12,5 +11,5 @@ public interface RecipesOperation {
 
     public RecipeResponseDTO addNewRecipe(Recipeml newRecipes);
 
-    public List<String> getCategories();
+    public CategoriesDTO getCategories();
 }

@@ -1,6 +1,7 @@
 package com.mendix.recipes.operation;
 
 import com.mendix.recipes.error.RecipesException;
+import com.mendix.recipes.model.dto.CategoriesDTO;
 import com.mendix.recipes.model.dto.RecipeResponseDTO;
 import com.mendix.recipes.model.dto.RecipesDTO;
 import com.mendix.recipes.model.rest.*;

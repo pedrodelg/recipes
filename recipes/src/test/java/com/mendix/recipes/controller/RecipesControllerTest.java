@@ -1,5 +1,6 @@
 package com.mendix.recipes.controller;
 
+import com.mendix.recipes.model.dto.CategoriesDTO;
 import com.mendix.recipes.model.dto.RecipeResponseDTO;
 import com.mendix.recipes.model.dto.RecipesDTO;
 import com.mendix.recipes.model.rest.*;
@@ -16,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
@@ -70,11 +72,11 @@ public class RecipesControllerTest {
     }
 
     @Test
-    public void get_recipes_without_query_parameters(){
+    public void test_get_recipes_without_query_parameters(){
 
         when(recipesOperation.getRecipes(null,null)).thenReturn(expectedResponse);
 
-        ResponseEntity<RecipesDTO> response = recipesController.recipesGet(null,null);
+        ResponseEntity<RecipesDTO> response = recipesController.getRecipes(null,null);
 
         verify(recipesOperation).getRecipes(null,null);
         assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -83,13 +85,13 @@ public class RecipesControllerTest {
     }
 
     @Test
-    void get_recipes_filtering_category() {
+    void test_get_recipes_filtering_category() {
 
         String category = "Main dishs";
 
         when(recipesOperation.getRecipes(category, null)).thenReturn(expectedResponse);
 
-        ResponseEntity<RecipesDTO> response = recipesController.recipesGet(category, null);
+        ResponseEntity<RecipesDTO> response = recipesController.getRecipes(category, null);
 
         verify(recipesOperation).getRecipes(category, null);
         assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -97,7 +99,7 @@ public class RecipesControllerTest {
     }
 
     @Test
-    void add_new_recipe() {
+    void test_add_new_recipe() {
 
         Recipeml newRecipe = new Recipeml();
         RecipeResponseDTO expectedResponse2 = RecipeResponseDTO.builder()
@@ -136,6 +138,26 @@ public class RecipesControllerTest {
         verify(recipesOperation).addNewRecipe(newRecipe);
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
         assertEquals(expectedResponse2, response.getBody());
+    }
+
+    @Test
+    void test_get_categories() {
+
+        CategoriesDTO expectedCategoriesDTO = new CategoriesDTO();
+
+        List<String> categories = Arrays.asList("Test", "Vegetables");
+        expectedCategoriesDTO.setCategories(categories);
+
+        when(recipesOperation.getCategories()).thenReturn(expectedCategoriesDTO);
+
+        RecipesController recipesController = new RecipesController(recipesOperation);
+
+        ResponseEntity<CategoriesDTO> response = recipesController.getRecipes();
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+
+        CategoriesDTO actualCategoriesDTO = response.getBody();
+        assertEquals(expectedCategoriesDTO, actualCategoriesDTO);
     }
 
 }

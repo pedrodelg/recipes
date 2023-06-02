@@ -20,8 +20,6 @@ public class RecipesRepository {
     @Value("${recipes.chili.jsonFileName}")
     private String chiliJsonFile;
 
-//    @Value("${recipes.amaretto.jsonFileName}")
-//    private String amarettoJsonFile;
 
     @Value("${recipes.zucchini.jsonFileName}")
     private String zucchiniJsonFile;
@@ -33,7 +31,7 @@ public class RecipesRepository {
     @PostConstruct
     public void  fillRecipeList() throws IOException {
 
-        List<RecipeComplete> recipeCompleteList = Arrays.asList(loadChiliList(chiliJsonFile)/*, loadChiliList(amarettoJsonFile)*/, loadChiliList(zucchiniJsonFile));
+        List<RecipeComplete> recipeCompleteList = Arrays.asList(loadChiliList(chiliJsonFile), loadChiliList(zucchiniJsonFile));
         RecipesDTO recipesDTOFill = new RecipesDTO();
         recipesDTOFill.setRecipesList(recipeCompleteList);
 
